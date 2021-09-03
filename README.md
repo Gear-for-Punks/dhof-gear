@@ -13,7 +13,7 @@ Launch tweet for [Gear](https://twitter.com/gearforpunks/status/1433559541778563
 
 - `output/gear.json` contains all tokenIds and their attributes.
 - `output/occurences.json` contains the number of occurences by attribute.
-- `output/rare.json` contains a mapping of `gearId` to `score` (which is the sum of number of occcrences of each child attribute for a `gearId`), sorted ascending by `score`. It also includes `rarest` which is how rare the loot bags attributes are (`1` == `rarest`, `8000` == `least rare`).
+- `output/rare.json` contains a mapping of `gearId` to `score` (which is the sum of number of occcrences of each child attribute for a `gearId`), sorted ascending by `score`. It also includes `rarest` which is how rare the gear bags attributes are (`1` == `rarest`, `8000` == `least rare`).
 - `output/images.json` contains the base64 encoded SVG of each tokenId
 
 ## Run locally
@@ -33,4 +33,4 @@ npm run images
 ```
 
 ## Credits
-- [@Anish-Agnihotri](https://github.com/Anish-Agnihotri/dhof-loot) for his awesome analytics project for loot which this was derived from
+- [@Anish-Agnihotri](https://github.com/Anish-Agnihotri/dhof-loot) for his awesome analytics project for loot which this was derived for this Gear Project

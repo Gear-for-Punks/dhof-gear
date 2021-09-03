@@ -2,14 +2,14 @@
 const fs = require("fs");
 
 (async () => {
-  // Load loot data
-  const data = await fs.readFileSync("./output/loot.json");
-  const loot = JSON.parse(data);
+  // Load gear data
+  const data = await fs.readFileSync("./output/gear.json");
+  const gear = JSON.parse(data);
 
   // Calculate attribute rarities
   let rarityIndex = {};
-  for (let i = 0; i < loot.length; i++) {
-    const attributes = loot[i][(i + 1).toString()];
+  for (let i = 0; i < gear.length; i++) {
+    const attributes = gear[i][(i + 1).toString()];
 
     // Add up number of occurences of attributes
     for (const attribute of Object.values(attributes)) {
@@ -27,24 +27,24 @@ const fs = require("fs");
 
   // Calculate occurence scores
   let scores = [];
-  for (let i = 0; i < loot.length; i++) {
+  for (let i = 0; i < gear.length; i++) {
     let score = 0;
-    const attributes = loot[i][(i + 1).toString()];
+    const attributes = gear[i][(i + 1).toString()];
 
     for (const attribute of Object.values(attributes)) {
       score += rarityIndex[attribute];
     }
-    scores.push({ lootId: i + 1, score });
+    scores.push({ gearId: i + 1, score });
   }
 
   // Sort by score
   scores = scores.sort((a, b) => a.score - b.score);
   // Sort by index of score
-  scores = scores.map((loot, i) => ({
-    ...loot,
+  scores = scores.map((gear, i) => ({
+    ...gear,
     rarest: i + 1,
   }));
 
-  // Print loot rarity
+  // Print gear rarity
   await fs.writeFileSync("./output/rare.json", JSON.stringify(scores));
 })();

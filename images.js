@@ -4,9 +4,9 @@ const ethers = require("ethers");
 const { abi } = require("./abi");
 
 // Setup contract
-const lootAddress = "0xFf796cbbe32B2150A4585a3791CADb213D0F35A3";
+const gearAddress = "0xFf796cbbe32B2150A4585a3791CADb213D0F35A3";
 const rpc = new ethers.providers.JsonRpcProvider("http://localhost:8545");
-const loot = new ethers.Contract(lootAddress, abi, rpc);
+const gear = new ethers.Contract(gearAddress, abi, rpc);
 
 (async () => {
   // List to hold images
@@ -17,7 +17,7 @@ const loot = new ethers.Contract(lootAddress, abi, rpc);
 
     try {
       // Get base64 encoded URI
-      let uri = await loot.tokenURI(i);
+      let uri = await gear.tokenURI(i);
       uri = uri.split(',')[1];
 
       // Decode into a JSON string 

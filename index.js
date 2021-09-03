@@ -4,13 +4,13 @@ const ethers = require("ethers");
 const { abi } = require("./abi");
 
 // Setup contract
-const lootAddress = "0xFf796cbbe32B2150A4585a3791CADb213D0F35A3";
+const gearAddress = "0xFf796cbbe32B2150A4585a3791CADb213D0F35A3";
 const rpc = new ethers.providers.JsonRpcProvider("http://localhost:8545");
-const loot = new ethers.Contract(lootAddress, abi, rpc);
+const gear = new ethers.Contract(gearAddress, abi, rpc);
 
 (async () => {
   // In-mem retrieval
-  let retrievedLoot = [];
+  let retrievedGear = [];
 
   // Collect 1...8000 ids
   for (let i = 1; i <= 7777; i++) {
@@ -19,18 +19,18 @@ const loot = new ethers.Contract(lootAddress, abi, rpc);
     // Collect parts
     const [chest, eyes, foot, hand, head, implant, waist, weapon] =
       await Promise.all([
-        loot.getChest(i),
-        loot.getEyes(i),
-        loot.getFoot(i),
-        loot.getHand(i),
-        loot.getHead(i),
-        loot.getImplant(i),
-        loot.getWaist(i),
-        loot.getWeapon(i),
+        gear.getChest(i),
+        gear.getEyes(i),
+        gear.getFoot(i),
+        gear.getHand(i),
+        gear.getHead(i),
+        gear.getImplant(i),
+        gear.getWaist(i),
+        gear.getWeapon(i),
       ]);
 
     // Push parts to array
-    retrievedLoot.push({
+    retrievedGear.push({
       [i]: {
         chest, eyes, foot, hand, head, implant, waist, weapon
       },
@@ -38,5 +38,5 @@ const loot = new ethers.Contract(lootAddress, abi, rpc);
   }
 
   // Write output
-  fs.writeFileSync("./output/gear.json", JSON.stringify(retrievedLoot));
+  fs.writeFileSync("./output/gear.json", JSON.stringify(retrievedGear));
 })();
