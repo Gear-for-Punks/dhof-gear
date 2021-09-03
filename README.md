@@ -1,20 +1,19 @@
-# dhof-loot
+# dhof-gear
 
-Launch tweet for [LOOT](https://twitter.com/dhof/status/1431316631934967815).
+Launch tweet for [Gear](https://twitter.com/gearforpunks/status/1433559541778563073).
 
-<img src="https://pbs.twimg.com/media/E90OnuPX0AAUXG8?format=png&name=medium" width="300">
+<img src="https://www.gearforpunks.com/social_share.png" width="300">
 
 ## Distribution
 
-- tokenIds `1` to `7778` claimable by user.
-- tokenIds `7778` to `8000` claimable by contract owner.
-- Each token has attributes: `chest`, `foot`, `hand`, `head`, `neck`, `ring`, `waist`, `weapon`.
+- tokenIds `1` to `7777` claimable by a user.
+- Each token has attributes: `chest`, `eyes`, `foot`, `hand`, `head`, `implant`, `waist`, `weapon`.
 
 ## Output
 
-- `output/loot.json` contains all tokenIds and their attributes.
+- `output/gear.json` contains all tokenIds and their attributes.
 - `output/occurences.json` contains the number of occurences by attribute.
-- `output/rare.json` contains a mapping of `lootId` to `score` (which is the sum of number of occcrences of each child attribute for a `lootId`), sorted ascending by `score`. It also includes `rarest` which is how rare the loot bags attributes are (`1` == `rarest`, `8000` == `least rare`).
+- `output/rare.json` contains a mapping of `gearId` to `score` (which is the sum of number of occcrences of each child attribute for a `gearId`), sorted ascending by `score`. It also includes `rarest` which is how rare the loot bags attributes are (`1` == `rarest`, `8000` == `least rare`).
 - `output/images.json` contains the base64 encoded SVG of each tokenId
 
 ## Run locally
@@ -23,7 +22,7 @@ Launch tweet for [LOOT](https://twitter.com/dhof/status/1431316631934967815).
 # Install dependencies
 npm install
 
-# Collect all loot
+# Collect all Gear
 npm run collect
 
 # Parse statistics
@@ -33,10 +32,5 @@ npm run parse
 npm run images
 ```
 
-## Extras
-
-- `derivatives/andy8052-ability-score` — Ability Score NFTs
-
 ## Credits
-
-- [@ktasbas](https://github.com/ktasbas) for adding base64 encoded SVG retrieval support
+- [@Anish-Agnihotri](https://github.com/Anish-Agnihotri/dhof-loot) for his awesome analytics project for loot which this was derived from
